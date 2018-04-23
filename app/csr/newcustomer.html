@@ -1,0 +1,78 @@
+<div class="container mainform">
+  <form name="clientform" method="post" action="csr/newcustomer.php">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span> New Customer</div>
+      <div class="panel-body form-horizontal">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="firstname">First name</label><br>
+            <input type="text" id="firstname" name="firstname" maxlength="50">
+          </div>
+          <div class="col-md-4">
+            <label for="lastname">Last name</label><br>
+            <input type="text" id="lastname" name="lastname" maxlength="50">
+          </div>
+          <div class="col-md-4">
+            <label for="phone">Primary phone</label><br>
+            <input type="text" id="phone" name="phone" maxlength="50">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="address">Address</label><br>
+            <input type="text" id="address" name="address" maxlength="100">
+          </div>
+          <div class="col-md-4">
+            <label for="addresscity">Village / Township / City</label><br>
+            <input type="text" id="addresscity" name="addresscity" maxlength="50">
+          </div>
+          <div class="col-md-4">
+            <label for="addressstate">State</label><br>
+            <select id="addressstate" name="addressstate" onchange="loadCounty('addresscounty','addressstate')">
+              <option value="">---Please select a state---</option>
+              <option value="DELAWARE">DELAWARE</option>
+              <option value="INDIANA">INDIANA</option>
+              <option value="KENTUCKY">KENTUCKY</option>
+              <option value="MARYLAND">MARYLAND</option>
+              <option value="OHIO">OHIO</option>
+              <option value="PENNSYLVANIA">PENNSYLVANIA</option>
+              <option value="VIRGINIA">VIRGINIA</option>
+              <option value="WEST VIRGINIA">WEST VIRGINIA</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="addresscounty">County</label><br>
+            <select id="addresscounty" name="addresscounty">
+                <option value=""></option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="addresszipcode">Zip code</label><br>
+            <input type="text" id="addresszipcode" name="addresszipcode" maxlength="5">
+          </div>
+          <div class="col-md-4">
+            <label for="email">E-mail</label><br>
+            <input type="text" id="email" name="email" maxlength="50">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="referralcode">Referral Code</label><br>
+            <input type="text" id="referralcode" name="referralcode" maxlength="50">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 align-right">
+            <br/>
+            <input type="hidden" id="refererpage" name="refererpage" value="{@refererpage}">
+            <input type="hidden" id="userid" name="userid" value="{@userid}">
+            <input type="hidden" id="user" name="user" value="{@user}">
+            <button type="submit" class="btn btn-success">Add customer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

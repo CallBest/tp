@@ -1,0 +1,114 @@
+
+.logo   { background: white;}
+.menu   { background: white; flex: 1;}
+.content{ background: white; flex: 1; min-height: 50vh;}
+.footer { background: rgba(211,211,211,0.5); text-align: center; font-size: 9px; bottom: 0; position: fixed; width: 100%; z-index: 999;}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-document {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 10px;
+}
+
+.flex-item {
+  flex: 1 auto;
+}
+
+.flex-column {
+  flex-flow: column;
+}
+
+.flex-card {
+  border: 1px solid #acf;
+  border-radius: 5px;
+  background: rgba(160,192,254,0.2);
+  margin: 20px;
+  padding: 10px;
+}
+
+.header {
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex: 1;
+}
+
+.navigation {
+  list-style: none;
+  margin: 0;
+  background: white;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row wrap;
+}
+
+.navigation a {
+  display: block;
+  color: steelblue;
+  text-decoration: none;
+  padding: 1em;
+}
+
+.navigation a:hover {
+  background: skyblue;
+}
+
+.row-item {
+  color: black;
+  padding: 2px;
+}
+
+.row-item:nth-of-type(odd) {
+  background: whitesmoke;
+  padding: 2px;
+}
+
+.row-item:nth-of-type(even) {
+  background: lightyellow;
+  padding: 2px;
+}
+
+.row-item:hover {
+  background: lightseagreen;
+}
+
+.row-item-header {
+  background-color: #444;
+  color: #fff;
+  padding: 2px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.subhead {
+  display: block;
+  background: #39c;
+  border-radius: 3px;
+  padding: 3px 5px;
+}
+
+/*mobile*/
+@media all and (min-width: 240px) {
+
+}
+
+/*tablet*/
+@media all and (min-width: 960px) {
+}
+
+/*pc*/
+@media all and (min-width: 1280px) {
+  
+}

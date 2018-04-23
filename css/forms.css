@@ -1,0 +1,17 @@
+label {
+  font-size: 12px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+input[type="text"], select {
+  width: 300px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+textarea {
+  width: 600px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}

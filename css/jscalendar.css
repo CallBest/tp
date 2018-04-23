@@ -1,0 +1,90 @@
+.monthcontroller {
+  width: 30px;
+  height: 40px;
+  border: 1px solid #369;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  background: #69c;
+}
+
+#monthbox {
+  font-size: 12px;
+  width: 166px;
+  height: 40px;
+  border: 1px solid #369;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  background: #369;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-adjust{
+  width: 28px;
+  height: 38px;
+  border: 0px solid transparent;
+  background: #369;
+  color: white;
+  font-weight: bold;
+}
+
+.daybox {
+  width: 30px;
+  height: 20px;
+  display: inline-block;
+  border: 1px solid #369;
+  text-align: center;
+  vertical-align: center;
+}
+
+.weekbox {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  display: block;
+  margin: 2px;
+}
+
+.daybox {
+  background: #ccc;
+}
+
+.weekbox .daybox:nth-child(1), .datebox:nth-of-type(1) {
+  background: #700;
+  color: white;
+}
+
+.datebox {
+  width: 30px;
+  height: 20px;
+  display: inline-block;
+  border: 1px solid #369;
+  text-align: center;
+  vertical-align: center;
+  background: #069;
+  color: #000;
+}
+
+.date-disabled {
+  background: #222;
+  color: #999;
+}
+
+.date-blank {
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+a.linkdate:link {
+  color: #7ff;
+  text-decoration: none;
+  display: block;
+}
+
+a.linkdate:hover, a.linkdate:active {
+  background: #cff;
+  color: #3aa;
+  text-decoration: none;
+  display: block;
+}

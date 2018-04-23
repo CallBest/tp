@@ -1,0 +1,420 @@
+<div class="container mainform">
+  <form name="clientform" method="post" action="csr/savevalues.php" onsubmit="return checkValues();">
+    <div class="panel panel-primary">
+      
+      <div class="panel-heading panel-client">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="javascript:showtab('clientinfo');">Client Information</a></li>
+          <li><a href="javascript:showtab('otherinfo');">Other client details</a></li>
+          <li><a href="javascript:showtab('newfill');">Orders</a></li>
+        </ul>
+      </div>
+      
+      <!--Client Information-->
+      <div class="panel-body form-horizontal" id="clientinfo">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="firstname">First name</label><br>
+            <input type="text" id="firstname" name="firstname" maxlength="50" value="{@firstname}">
+          </div>
+          <div class="col-md-4">
+            <label for="lastname">Last name</label><br>
+            <input type="text" id="lastname" name="lastname" maxlength="50" value="{@lastname}">
+          </div>
+          <div class="col-md-4">
+            <label for="phone">Primary phone</label><br>
+            <input type="text" id="phone" name="phone" maxlength="50" value="{@phone}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="address">Address</label><br>
+            <input type="text" id="address" name="address" maxlength="100" value="{@address}">
+          </div>
+          <div class="col-md-4">
+            <label for="addresscity">Village / Township / City</label><br>
+            <input type="text" id="addresscity" name="addresscity" maxlength="50" value="{@addresscity}">
+          </div>
+          <div class="col-md-4">
+            <label for="addressstate">State</label><br>
+            <select id="addressstate" name="addressstate" onchange="loadCounty('addresscounty','addressstate')">
+              <option value="{@addressstate}">{@addressstate}</option>
+              <option value="">---Please select a state---</option>
+              <option value="DELAWARE">DELAWARE</option>
+              <option value="INDIANA">INDIANA</option>
+              <option value="KENTUCKY">KENTUCKY</option>
+              <option value="MARYLAND">MARYLAND</option>
+              <option value="OHIO">OHIO</option>
+              <option value="PENNSYLVANIA">PENNSYLVANIA</option>
+              <option value="VIRGINIA">VIRGINIA</option>
+              <option value="WEST VIRGINIA">WEST VIRGINIA</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="addresscounty">County</label><br>
+            <select id="addresscounty" name="addresscounty">
+              <option value="{@addresscounty}">{@addresscounty}</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="addresszipcode">Zip code</label><br>
+            <input type="text" id="addresszipcode" name="addresszipcode" maxlength="5" value="{@addresszipcode}">
+          </div>
+          <div class="col-md-4">
+            <label for="email">E-mail</label><br>
+            <input type="text" id="email" name="email" maxlength="50" value="{@email}">
+          </div>
+        </div>
+      </div>
+
+      <!--Other Information-->
+      <div class="panel-body form-horizontal" id="otherinfo">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="accountnumber">Account number</label><br>
+            <input type="text" id="accountnumber" name="accountnumber" maxlength="50" value="{@accountnumber}">
+          </div>
+          <div class="col-md-4">
+            <label for="referralcode">Referral code</label><br>
+            <input type="text" id="referralcode" name="referralcode" maxlength="50" value="{@referralcode}">
+          </div>
+          <div class="col-md-4">
+            <label for="referralcredit">Available referral credit</label><br>
+            <input type="text" id="referralcredit" name="referralcredit" maxlength="50" value="{@referralcredit}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <input type="checkbox" id="markdrivewaydifficult" name="markdrivewaydifficult" {@markdrivewaydifficult}></input>
+            <label for="markdrivewaydifficult">Mark as driveway difficult</label><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input type="checkbox" id="marknoservice" name="marknoservice" {@marknoservice}></input>
+            <label for="marknoservice">Mark as no service</label><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input type="checkbox" id="problemcustomer" name="problemcustomer" {@problemcustomer}></input>
+            <label for="problemcustomer">Flag as problem customer</label><br>
+          </div>
+        </div>
+
+        <hr class="single"/>
+
+        <div class="row">
+          <div class="col-md-2">
+            <input type="checkbox" id="haspricecap" name="haspricecap" {@haspricecap}></input>
+            <label for="haspricecap">Has price cap</label><br>
+          </div>
+          <div class="col-md-4">
+            <label for="haspricecapppg">PPG</label><br>
+            <input type="text" id="haspricecapppg" name="haspricecapppg" value="{@haspricecapppg}"></input>
+          </div>
+          <div class="col-md-4">
+            <label for="haspricecapexp">EXP</label><br>
+            <input type="text" id="haspricecapexp" name="haspricecapexp" value="{@haspricecapexp}"></input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <input type="checkbox" id="haslockin" name="haslockin" {@haslockin}></input>
+            <label for="haslockin">Has lock-in</label><br>
+          </div>
+          <div class="col-md-4">
+            <label for="haslockinppg">PPG</label><br>
+            <input type="text" id="haslockinppg" name="haslockinppg" value="{@haslockinppg}"></input>
+          </div>
+          <div class="col-md-4">
+            <label for="haslockinexp">EXP</label><br>
+            <input type="text" id="haslockinexp" name="haslockinexp" value="{@haslockinexp}"></input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="tiergalloncoverage">Tier gallon coverage</label><br>
+            <input type="text" id="tiergalloncoverage" name="tiergalloncoverage" value="{@tiergalloncoverage}"></input>
+          </div>
+          <div class="col-md-4">
+            <label for="restrictedprebuygallons">Restricted pre-buy gallons</label><br>
+            <input type="text" id="restrictedprebuygallons" name="restrictedprebuygallons" value="{@restrictedprebuygallons}"></input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <input type="checkbox" id="hasprebuyannualfee" name="hasprebuyannualfee" {@haslockin}></input>
+            <label for="hasprebuyannualfee">Has pre-buy annual fee</label><br>
+          </div>
+          <div class="col-md-4">
+            <label for="prebuyfeestartdate">Pre-buy annual fee start date</label><br>
+            <input type="text" id="prebuyfeestartdate" name="prebuyfeestartdate" value="{@prebuyfeestartdate}"></input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="tanksizeinfo">Tank size</label><br>
+            <input type="text" id="tanksizeinfo" name="tanksizeinfo" value="{@tanksize}"></input>
+          </div>
+          <div class="col-md-4">
+            <label for="serialnumber">Serial number</label><br>
+            <input type="text" id="serialnumber" name="serialnumber" value="{@serialnumber}"></input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="tankannualmaintenancefee">Tank annual maintenance fee</label><br>
+            <input type="text" id="tankannualmaintenancefee" name="tankannualmaintenancefee" value="{@tankannualmaintenancefee}"></input>
+          </div>
+          <div class="col-md-4">
+            <label for="maintenancefeestartdate">Tank annual maintenance fee start date</label><br>
+            <input type="text" id="maintenancefeestartdate" name="maintenancefeestartdate" value="{@maintenancefeestartdate}"></input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input type="checkbox" id="onbudgetprogram" name="onbudgetprogram" {@onbudgetprogram}></input>
+            <label for="onbudgetprogram">On budget program</label><br>
+          </div>
+          <div class="col-md-4">
+            <input type="checkbox" id="twelvemonthtankprogram" name="twelvemonthtankprogram" {@twelvemonthtankprogram}></input>
+            <label for="twelvemonthtankprogram">On twelve month tank program</label><br>
+          </div>
+        </div>
+      </div>
+
+      <!--Orders-->
+      <div class="panel-body form-horizontal" id="newfill">
+        <div class="row">
+          <div class="col-md-4">
+            Existing orders (unfulfilled):
+          </div>
+          <div class="col-md-4">
+            {@orders}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            Available pre-buy gallons:
+          </div>
+        </div>
+
+        <hr class='single'/>
+
+        <div class="row">
+          <div class="col-md-2">
+            <input type="checkbox" id="newtankorder" name="newtankorder"></input>
+            <label for="newtankorder">New tank order</label>
+          </div>
+          <div class="col-md-4">
+            <label for="buytank">Tank capacity and type</label><br>
+            <select id="buytank" name="buytank">
+              <option value=""></option>
+              <option value="" class="bold" disabled><strong>Above Ground</strong></option>
+              <option value="120 Gallon AG"> &nbsp; 120 Gallon AG</option>
+              <option value="250 Gallon AG"> &nbsp; 250 Gallon AG</option>
+              <option value="320 Gallon AG"> &nbsp; 320 Gallon AG</option>
+              <option value="500 Gallon AG"> &nbsp; 500 Gallon AG</option>
+              <option value="1000 Gallon AG"> &nbsp; 1000 Gallon AG</option>
+              <option value="" class="bold" disabled>Underground</option>
+              <option value="500 Gallon UG"> &nbsp; 500 Gallon UG</option>
+              <option value="1000 Gallon UG"> &nbsp; 1000 Gallon UG</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-2">
+            <label for="tankownership">Tank Ownership</label><br>
+            <select id="tankownership" name="tankownership">
+              <option value="{@tankownership}">{@tankownership}</option>
+              <option value="Customer owned">Customer owned</option>
+              <option value="Leased">Leased</option>
+              <option value="Lease to own">Lease to own</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="tanksize">Tank Size</label><br>
+            <input type="text" id="tanksize" name="tanksize" maxlength="50" value="{@tanksize}">
+          </div>
+        </div>
+
+        <hr class="single"/>
+
+        <div class="row">
+          <div class="col-md-2">
+            <input type="checkbox" id="newfillorder" name="newfillorder"></input>
+            <label for="newfillorder">Regular fill order</label><br/>
+          </div>
+          <div class="col-md-4">
+            <label for="percentremaining">Percent remaining</label><br>
+            <input type="text" id="percentremaining" name="percentremaining" maxlength="2" onkeyup="getFillGallons();">
+          </div>
+          <div class="col-md-4">
+            <label for="maxfill">Max allowed fill gallons</label><br>
+            <input type="text" id="maxfill" name="maxfill" maxlength="50" disabled>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <input type="checkbox" id="newprebuyorder" name="newprebuyorder"></input>
+            <label for="newprebuyorder">New pre-buy order</label>
+          </div>
+          <div class="col-md-4">
+            <label for="gallons" class="required">Gallons</label><br>
+            <input type="text" id="gallons" name="gallons" maxlength="4">
+          </div>
+          <div class="col-md-4">
+            <label for="ppg" class="required">Price per gallon</label><br>
+            <input type="text" id="ppg" name="ppg" maxlength="10">
+          </div>
+        </div>
+
+        <hr class="single"/>
+
+        <div class="row">
+          <div class="col-md-2">
+            <input type="checkbox" id="paywithcc" name="paywithcc"></input>
+            <label for="paywithcc">Pay with credit card</label><br>
+          </div>
+          <div class="col-md-4">
+            <label for="cardtype">Card type</label><br>
+            <select id="cardtype" name="cardtype">
+              <option value="{@cardtype}">{@cardtype}</option>
+              <option value="Visa">Visa</option>
+              <option value="Mastercard">Mastercard</option>
+              <option value="American Express">American Express</option>
+              <option value="Discover">Discover</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="cardnumber">Card number</label><br>
+            <input type="text" id="cardnumber" name="cardnumber" maxlength="19" value="{@cardnumber}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-2">
+            <label for="expirationdate">Expiration date</label><br>
+            <input type="text" id="expirationdate" name="expirationdate" maxlength="10" value="{@expirationdate}">
+          </div>
+          <div class="col-md-4">
+            <label for="cvv">CVV</label><br>
+            <input type="text" id="cvv" name="cvv" maxlength="3" value="{@cvv}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input type="checkbox" id="expressdelivery" name="expressdelivery"></input>
+            <label for="expressdelivery">Express delivery</label><br>
+          </div>
+        </div>
+
+        <hr class="single"/>
+
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            Check the appropriate boxes to include in the calculation.<br/>
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" onclick="calculateOrder();">Calculate price</button>
+              </span>
+              <input type="text" id="totalamount" name="totalamount" class="form-control" placeholder="Total" readonly>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <br/>
+          <div class="col-md-6 col-md-offset-3" id="calculatehere">
+          </div>
+        </div>
+
+        <hr class="double"/>
+
+        <div class="row">
+          <div class="col-md-8">
+            <label for="permanentdeliveryinstructions">Permanent delivery instructions</label><br>
+            <textarea id="permanentdeliveryinstructions" name="permanentdeliveryinstructions" maxlength="100">{@permanentdeliveryinstructions}</textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <br/>
+            <button type="button" id="copytobilling" class="btn btn-primary" onclick="copyToBilling();">Copy billing address from customer address</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="billingaddress">Billing address</label><br>
+            <input type="text" id="billingaddress" name="billingaddress" maxlength="100" value="{@billingaddress}">
+          </div>
+          <div class="col-md-4">
+            <label for="billingcity">City</label><br>
+            <input type="text" id="billingcity" name="billingcity" maxlength="50" value="{@billingcity}">
+          </div>
+          <div class="col-md-4">
+            <label for="billingcounty">County</label><br>
+            <input type="text" id="billingcounty" name="billingcounty" maxlength="50" value="{@billingcounty}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="billingstate">State</label><br>
+            <select id="billingstate" name="billingstate">
+              <option value="{@billingstate}">{@billingstate}</option>
+              <option value="DELAWARE">DELAWARE</option>
+              <option value="INDIANA">INDIANA</option>
+              <option value="KENTUCKY">KENTUCKY</option>
+              <option value="MARYLAND">MARYLAND</option>
+              <option value="OHIO">OHIO</option>
+              <option value="PENNSYLVANIA">PENNSYLVANIA</option>
+              <option value="VIRGINIA">VIRGINIA</option>
+              <option value="WEST VIRGINIA">WEST VIRGINIA</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="billingzipcode">Zip code</label><br>
+            <input type="text" id="billingzipcode" name="billingzipcode" maxlength="5" value="{@billingzipcode}">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="panel panel-primary">
+      <div class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span> Call Status</div>
+      <div class="panel-body form-horizontal">
+        <div class="row">
+          <div class="col-md-8">
+            Notes<br/>
+            <textarea rows="2" id="remarks" name="remarks"></textarea><br/>
+            Previous notes:<br/>
+            <em>{@previousnotes}</em>
+          </div>
+          <div class="col-md-4">
+            <p align="right">
+              Disposition
+              <select id="disposition" name="disposition">
+                <option value=""></option>
+                <loop dispositions>
+                  <option value="{@disposition}">{@disposition}</option>
+                </loop dispositions>
+              </select>
+              <br/><br/>
+              <input type="hidden" id="refererpage" name="refererpage" value="{@refererpage}">
+              <input type="hidden" id="userid" name="userid" value="{@userid}">
+              <input type="hidden" id="user" name="user" value="{@user}">
+              <input type="hidden" id="leadid" name="leadid" value="{@leadid}">
+              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<br/><br/><br/>

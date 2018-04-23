@@ -1,0 +1,172 @@
+<div class="flex-container" ng-controller="dbCtrl" ng-app='scheduler' ng-init="fetch();">
+  <div class="flex-item flex-card">
+    <div class="subhead">
+      Client Details
+    </div>
+    <div>
+      <label for="clientname">Client name</label><br>
+      <input type="text" id="clientname" name="clientname" maxlength="50" readonly value="{@clientname}">
+    </div>
+    <div>
+      <label for="ordertype">Order type</label><br>
+      <input type="text" id="ordertype" name="ordertype" maxlength="50" readonly value="{@ordertype}">
+    </div>
+    <div>
+      <label for="orderdate">Order date</label><br>
+      <input type="text" id="orderdate" name="orderdate" maxlength="50" readonly value="{@orderdate}">
+    </div>
+    <div>
+      <label for="status">Status</label><br>
+      <input type="text" id="status" name="status" maxlength="50" readonly value="{@disposition}">
+    </div>
+  </div>
+  <div class="flex-item flex-card">
+    <div class="subhead">
+      Set Delivery
+    </div>
+    <div>
+      <label for="action">Action</label><br>
+      <select name='action' id='action'>
+        <option value=""></option>
+        <option value="Scheduled Delivery">Scheduled Delivery</option>
+        <option value="Declined Order">Declined Order</option>
+      </select>
+    </div>
+    <div>
+      <label for="driver">Driver</label><br>
+      <select name='driver' id='driver'>
+        <option value=""></option>
+        <option value="Driver Red">Driver Red</option>
+        <option value="Driver Green">Driver Green</option>
+        <option value="Driver Blue">Driver Blue</option>
+        <option value="Driver Yellow">Driver Yellow</option>
+        <option value="Driver Pink">Driver Pink</option>
+      </select>
+    </div>
+    <div>
+      Schedule:
+      <div id="calendar">
+        <div class="weekbox">
+          <div class="monthcontroller"><button class="btn-adjust" onclick="javascript:adjustMonth(-1);">&lt;</button></div>
+          <div id="monthbox"></div>
+          <div class="monthcontroller"><button class="btn-adjust" onclick="javascript:adjustMonth(1);">&gt;</button></div>
+        </div>
+        <div class="weekbox">
+          <div class="daybox">Sun</div>
+          <div class="daybox">Mon</div>
+          <div class="daybox">Tue</div>
+          <div class="daybox">Wed</div>
+          <div class="daybox">Thu</div>
+          <div class="daybox">Fri</div>
+          <div class="daybox">Sat</div>
+        </div>
+        
+        <div class="weekbox">
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+        </div>
+        <div class="weekbox">
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+        </div>
+        <div class="weekbox">
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+        </div>
+        <div class="weekbox">
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+        </div>
+        <div class="weekbox">
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+        </div>
+        <div class="weekbox">
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+          <div class="datebox"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex-item flex-card">
+    <div class="subhead">
+      Deliveries Scheduled on {@sched}
+    </div>
+    <div>
+      <center>
+        <input type="text" name="sched" id="sched" value="{@sched}" ng-model="scheduledate">
+        <button ng-click='fetch();'>Check schedule</button>
+        <table border='1' cellspacing="0" style="width:100%;margin:0 auto;">
+          <tr>
+            <th width='25%'>Client</th>
+            <th width='25%'>Order Type</th>
+            <th width='25%'>Order Date</th>
+            <th width='25%'>Driver</th>
+          </tr>
+          <tr ng-repeat='client in data | filter: client.deliverreddate = scheduledate'>
+            <td>{{client.dclientname}}</td>
+            <td>{{client.dordertype}}</td>
+            <td>{{client.dorderdate}}</td>
+            <td>{{client.ddriver}}</td>
+          </tr>
+        </table>
+      </center>
+    </div>
+  </div>
+</div>
+
+<script src="../js/calendar.js"></script>
+<script language="Javascript">
+  drawCalendar();
+  addStyleDisabled();
+</script>
+
+<script src="../js/angular.min.js"></script>
+<script>
+  var fetch = angular.module('scheduler', []);
+
+  fetch.controller('dbCtrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.fetch = function(){
+      $http({
+          method: 'post',
+          url: 'delivery/getschedule.php',
+          data: {'sched':$scope.scheduledate}
+      }).then(function successCallback(response) {
+            $scope.data = response.data;
+      });
+    }
+    if ($scope.scheduledate!=undefined) {
+      $scope.fetch();
+    }
+  }]);
+</script>
