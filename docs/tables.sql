@@ -220,3 +220,25 @@ create table deliveries (
 	markpaid bit not null default 0,
 	primary key (deliveryid)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
+
+DROP TABLE IF EXISTS prices;
+create table prices (
+	price_id int(11) not null auto_increment,
+	county varchar(50) not null default '',
+	state varchar(20) not null default '',
+	ppg float not null default 0,
+	ppgfloor float not null default 0,
+	leaseppg float not null default 0,
+	leasefloor float not null default 0,
+	prebuyfloor float not null default 0,
+	taxrate float not null default 0,
+	primary key (price_id)
+) ENGINE=InnoDB AUTO_INCREMENT=1;
+
+DROP TABLE IF EXISTS fixedprices;
+create table prices (
+	fixedprice_id int(11) not null auto_increment,
+	itemname varchar(50) not null default '',
+	itemprice float not null default 0,
+	primary key (fixedprice_id)
+) ENGINE=InnoDB AUTO_INCREMENT=1;

@@ -133,3 +133,20 @@ tr.searchresult {
 tr.searchresult:hover {
   background: #99ccff;
 }
+
+.boxed-form {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: #999 3px 3px;
+}
+
+.label-checkbox {
+  margin-left: 2px;
+  margin-right: 20px;
+}
+
+.input-group {
+  margin: 5px auto;
+}

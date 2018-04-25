@@ -1,7 +1,7 @@
 <?php
 
-require_once("includes/cookie.php");
-require_once("includes/template.php");
+require_once("../includes/cookie.php");
+require_once("../includes/template.php");
 
 $body = new Template();
 $cookie = new CookieInfo("TP_9");
@@ -19,23 +19,59 @@ if ($cookie->check()) {
 }
 
 // set the header menu
-$body->set_template("templates/admin/header.html");
+$body->set_template("admin/header.html");
 echo $body->create();
 
 //set the main content
 $page = isset($_REQUEST['show']) ? strtolower(str_replace("'","",$_REQUEST['show'])) : 'dashboard';
 switch($page){
   case 'price_setting':
-    $body->set_template("templates/admin/price.html");
+    $body->set_template("admin/price.html");
+    break;
+  case 'price_history':
+    $body->set_template("admin/price.html");
+    break;
+  case 'set_advisory':
+    $body->set_template("admin/price.html");
+    break;
+  case 'sales_daily':
+    $body->set_template("admin/sales.html");
+    break;
+  case 'sales_weekly':
+    $body->set_template("admin/sales.html");
+    break;
+  case 'sales_monthly':
+    $body->set_template("admin/sales.html");
+    break;
+  case 'staff_csr':
+    $body->set_template("admin/staff_csr.html");
+    break;
+  case 'staff_delivery':
+    $body->set_template("admin/staff.html");
+    break;
+  case 'staff_driver':
+    $body->set_template("admin/staff.html");
+    break;
+  case 'staff_sales':
+    $body->set_template("admin/staff.html");
+    break;
+  case 'staff_admin':
+    $body->set_template("admin/staff.html");
     break;
   case 'branch':
-    $body->set_template("templates/admin/branch.html");
+    $body->set_template("admin/staff.html");
+    break;
+  case 'report_call':
+    $body->set_template("admin/report.html");
+    break;
+  case 'report_sales':
+    $body->set_template("admin/report.html");
     break;
   default:
-    $body->set_template("templates/admin/cpanel.html");
+    $body->set_template("admin/cpanel.html");
 }
 echo $body->create();
 
 // set the footer, if any.
-$body->set_template("templates/admin/footer.html");
+$body->set_template("admin/footer.html");
 echo $body->create();

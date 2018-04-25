@@ -1,15 +1,65 @@
-<div class="container mainform">
-  <div class="panel panel-primary">
-    <div class="panel-body form-horizontal">
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          Current retail price: $2.499
-          <br><br>
-          <label for="firstname">Retail price</label><br>
-          <input type="text" id="price" name="price" maxlength="10" value="">
-          <button class="btn btn-primary btn-center">Set retail price</button>
-        </div>
-      </div>
-    </div>
+<div class='boxed-form'>
+  <div class="input-group">
+    <span class="input-group-addon">Increase/decrease all prices by </span>
+    <input type="number" class="form-control" placeholder="0.00" min='-20' max='20' step="0.05">
+    <span class="input-group-btn">
+      <button class="btn btn-primary" type="button">Adjust prices</button>
+    </span>
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Increase/decrease all lease rate by </span>
+    <input type="number" class="form-control" placeholder="0.00" min='-20' max='20' step="0.1">
+    <span class="input-group-btn">
+      <button class="btn btn-primary" type="button">Adjust lease rate</button>
+    </span>
   </div>
 </div>
+
+<div class="boxed-form">
+  <div class="input-group">
+      <span class="input-group-addon">Show state </span>
+      <span class="input-group-addon">
+        <input type="checkbox" name="states" value="AL"><span class="label-checkbox">AL</span>
+        <input type="checkbox" name="states" value="DC"><span class="label-checkbox">DC</span>
+        <input type="checkbox" name="states" value="DE"><span class="label-checkbox">DE</span>
+        <input type="checkbox" name="states" value="IN"><span class="label-checkbox">IN</span>
+        <input type="checkbox" name="states" value="KY"><span class="label-checkbox">KY</span>
+        <input type="checkbox" name="states" value="MD"><span class="label-checkbox">MD</span>
+        <input type="checkbox" name="states" value="MI"><span class="label-checkbox">MI</span>
+        <input type="checkbox" name="states" value="NJ"><span class="label-checkbox">NJ</span>
+        <input type="checkbox" name="states" value="OH" checked><span class="label-checkbox">OH</span>
+        <input type="checkbox" name="states" value="PA"><span class="label-checkbox">PA</span>
+        <input type="checkbox" name="states" value="VA"><span class="label-checkbox">VA</span>
+        <input type="checkbox" name="states" value="WV"><span class="label-checkbox">WV</span>
+      </span>
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" id="toggleState" onclick="toggleState();">Check all</button>
+      </span>
+    </div>
+  County
+  State
+  PPG
+  Daily Floor
+  Lease PPG
+  Lease Floor
+  PB Floor
+  Tax %
+</div>
+
+<script language="Javascript">
+  function toggleState() {
+    var b = document.getElementById('toggleState');
+    var checkboxes = document.getElementsByName('states');
+    if (b.innerHTML=='Check all') {
+      b.innerHTML = 'Check none';
+      checkboxes.forEach(function(e){
+        e.checked = true;
+      });
+    } else {
+      b.innerHTML = 'Check all';
+      checkboxes.forEach(function(e){
+        e.checked = false;
+      });
+    }
+  }
+</script>

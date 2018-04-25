@@ -367,6 +367,7 @@ function calculateOrder() {
   TOTAL               ---------------   $ `+ total +`
   </pre>`;
   document.getElementById('calculatehere').innerHTML = prompt;
+  document.getElementById('pricebreakdown').value = prompt;
   document.getElementById('totalamount').value = total;
 }
 

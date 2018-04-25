@@ -132,4 +132,6 @@ function addLinks() {
 
 function showDate(d) {
   document.getElementById('sched').value = d;
+  document.getElementById('displaySchedDate').innerHTML = 'Deliveries scheduled on ' + d;
+  showDeliverSchedule(d);
 }

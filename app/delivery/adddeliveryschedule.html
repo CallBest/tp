@@ -1,4 +1,4 @@
-<div class="flex-container" ng-controller="dbCtrl" ng-app='scheduler' ng-init="fetch();">
+<div class="flex-container">
   <div class="flex-item flex-card">
     <div class="subhead">
       Client Details
@@ -120,26 +120,19 @@
   </div>
   <div class="flex-item flex-card">
     <div class="subhead">
-      Deliveries Scheduled on {@sched}
+      <span id="displaySchedDate"></span>
     </div>
     <div>
       <center>
-        <input type="text" name="sched" id="sched" value="{@sched}" ng-model="scheduledate">
-        <button ng-click='fetch();'>Check schedule</button>
-        <table border='1' cellspacing="0" style="width:100%;margin:0 auto;">
-          <tr>
-            <th width='25%'>Client</th>
-            <th width='25%'>Order Type</th>
-            <th width='25%'>Order Date</th>
-            <th width='25%'>Driver</th>
-          </tr>
-          <tr ng-repeat='client in data | filter: client.deliverreddate = scheduledate'>
-            <td>{{client.dclientname}}</td>
-            <td>{{client.dordertype}}</td>
-            <td>{{client.dorderdate}}</td>
-            <td>{{client.ddriver}}</td>
-          </tr>
-        </table>
+        <input type="hidden" name="sched" id="sched">
+        <div class="flex-container">
+          <div class="flex-1">Client</div>
+          <div class="flex-1">Order Type</div>
+          <div class="flex-1">Order Date</div>
+          <div class="flex-1">Delivery Date</div>
+          <div class="flex-1">Driver</div>
+        </div>
+        <div class="flex-container" id="deliveries"></div>
       </center>
     </div>
   </div>
@@ -149,24 +142,35 @@
 <script language="Javascript">
   drawCalendar();
   addStyleDisabled();
-</script>
 
-<script src="../js/angular.min.js"></script>
-<script>
-  var fetch = angular.module('scheduler', []);
-
-  fetch.controller('dbCtrl', ['$scope', '$http', function ($scope, $http) {
-    $scope.fetch = function(){
-      $http({
-          method: 'post',
-          url: 'delivery/getschedule.php',
-          data: {'sched':$scope.scheduledate}
-      }).then(function successCallback(response) {
-            $scope.data = response.data;
-      });
+  function showDeliverSchedule(d) {
+    if (window.XMLHttpRequest) {
+      xmlhttp=new XMLHttpRequest();
+    } else {
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
-    if ($scope.scheduledate!=undefined) {
-      $scope.fetch();
+    xmlhttp.onreadystatechange=getMsg;
+    url = "delivery/getschedule.php?sched=" + d;
+    xmlhttp.open("POST",url,true);
+    xmlhttp.send(null);
+  }
+  
+  function getMsg() {
+    if(xmlhttp.readyState==4) {
+      var data = JSON.parse(xmlhttp.responseText);
+      var x=0;
+      var deliveries = [];
+      for (x=0; x < data.length; x++) {
+        deliveries.push("<div class='flex-container'>");
+        deliveries.push("<div class='flex-1'>"+data[x].dclientname+"</div>");
+        deliveries.push("<div class='flex-1'>"+data[x].dordertype+"</div>");
+        deliveries.push("<div class='flex-1'>"+data[x].dorderdate.substring(0,10)+"</div>");
+        deliveries.push("<div class='flex-1'>"+data[x].scheduled.substring(0,10)+"</div>");
+        deliveries.push("<div class='flex-1'>"+data[x].ddriver+"</div>"); 
+        deliveries.push("</div>");
+      }
+      document.getElementById('deliveries').innerHTML = deliveries.join('\n');
+      //document.getElementById('deliveries').innerHTML = data;
     }
-  }]);
+  }
 </script>
