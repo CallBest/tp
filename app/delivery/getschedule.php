@@ -7,8 +7,10 @@ $sched = $_REQUEST['sched'];
 $outdata = [];
 $db = new dbconnection();
 $db->dbconnect();
-$db->query = "select a.leadid as dclientname,ordertype as dordertype,orderdate as dorderdate,assigneddriver as ddriver,scheduled from deliveries a inner join orders b on (a.leadid=b.leadid)
-where scheduled='$sched'";
+$db->query = "select a.leadid, concat(firstname, ' ', lastname) as dclientname,ordertype as dordertype,orderdate as dorderdate,assigneddriver as ddriver,scheduled
+              from deliveries a inner join orders b on (a.leadid=b.leadid)
+              inner join masterfile m on (a.leadid = m.leadid)
+              where scheduled='$sched'";
 $db->execute();
 $rowcount = $db->rowcount();
 for ($x=0; $x < $rowcount; $x++) {

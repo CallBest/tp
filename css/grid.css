@@ -107,6 +107,57 @@
   border: 1px solid #3cf;
 }
 
+#deliveries {
+  border: 1px solid gray;
+  margin: 10px 0;
+}
+
+#deliveries th {
+  background: #999;
+  padding: 5px;
+  text-align: center;
+}
+
+#deliveries tr td{
+  padding: 5px;
+}
+#deliveries tr:nth-child(odd) {
+  background: #acd;
+}
+#deliveries tr:nth-child(even) {
+  background: #69d;
+}
+
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
+.btn {
+  padding: 5px 12px;
+  border: 0 none;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+.btn-primary {
+  background: #0099cc;
+  color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  background: #33a6cc;
+}
+
+.btn-primary:active, .btn-primary.active {
+  background: #007299;
+  box-shadow: none;
+}
+
 /*mobile*/
 @media all and (min-width: 240px) {
 

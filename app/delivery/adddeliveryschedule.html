@@ -25,21 +25,13 @@
       Set Delivery
     </div>
     <div>
-      <label for="action">Action</label><br>
-      <select name='action' id='action'>
-        <option value=""></option>
-        <option value="Scheduled Delivery">Scheduled Delivery</option>
-        <option value="Declined Order">Declined Order</option>
-      </select>
-    </div>
-    <div>
       <label for="driver">Driver</label><br>
       <select name='driver' id='driver'>
         <option value=""></option>
-        <option value="Driver Red">Driver Red</option>
-        <option value="Driver Green">Driver Green</option>
-        <option value="Driver Blue">Driver Blue</option>
-        <option value="Driver Yellow">Driver Yellow</option>
+        <option value="Driver Red">Michael Abbott</option>
+        <option value="Driver Green">Dennis Adams</option>
+        <option value="Driver Blue"> Mark Marshall</option>
+        <option value="Driver Yellow">Billie Abdon</option>
         <option value="Driver Pink">Driver Pink</option>
       </select>
     </div>
@@ -117,6 +109,8 @@
         </div>
       </div>
     </div>
+    <hr/>
+    <button type="button" class='btn btn-primary center'>Set schedule</button>
   </div>
   <div class="flex-item flex-card">
     <div class="subhead">
@@ -125,14 +119,7 @@
     <div>
       <center>
         <input type="hidden" name="sched" id="sched">
-        <div class="flex-container">
-          <div class="flex-1">Client</div>
-          <div class="flex-1">Order Type</div>
-          <div class="flex-1">Order Date</div>
-          <div class="flex-1">Delivery Date</div>
-          <div class="flex-1">Driver</div>
-        </div>
-        <div class="flex-container" id="deliveries"></div>
+        <table id='deliveries' width="100%" border="1"></table>
       </center>
     </div>
   </div>
@@ -159,18 +146,37 @@
     if(xmlhttp.readyState==4) {
       var data = JSON.parse(xmlhttp.responseText);
       var x=0;
-      var deliveries = [];
+      var deliveries = [
+          '<tr>',
+            '<th width="5%">ID</th>',
+            '<th width="20%">Client</th>',
+            '<th width="15%">Order Type</th>',
+            '<th width="20%">Order Date</th>',
+            '<th width="20%">Delivery Date</th>',
+            '<th width="20%">Driver</th>',
+          '</tr>'
+      ];
       for (x=0; x < data.length; x++) {
-        deliveries.push("<div class='flex-container'>");
+        /* deliveries.push("<div class='flex-container'>");
         deliveries.push("<div class='flex-1'>"+data[x].dclientname+"</div>");
         deliveries.push("<div class='flex-1'>"+data[x].dordertype+"</div>");
         deliveries.push("<div class='flex-1'>"+data[x].dorderdate.substring(0,10)+"</div>");
         deliveries.push("<div class='flex-1'>"+data[x].scheduled.substring(0,10)+"</div>");
         deliveries.push("<div class='flex-1'>"+data[x].ddriver+"</div>"); 
-        deliveries.push("</div>");
+        deliveries.push("</div>"); */
+        deliveries.push("<tr>");
+        deliveries.push("<td>"+data[x].leadid+"</td>");
+        deliveries.push("<td>"+data[x].dclientname+"</td>");
+        deliveries.push("<td>"+data[x].dordertype+"</td>");
+        deliveries.push("<td>"+data[x].dorderdate.substring(0,10)+"</td>");
+        deliveries.push("<td>"+data[x].scheduled.substring(0,10)+"</td>");
+        deliveries.push("<td>"+data[x].ddriver+"</td>"); 
+        deliveries.push("</tr>");
       }
       document.getElementById('deliveries').innerHTML = deliveries.join('\n');
-      //document.getElementById('deliveries').innerHTML = data;
     }
   }
+
+  var today = new Date().toJSON().slice(0,10);
+  showDate(today);
 </script>
