@@ -1,0 +1,89 @@
+<div class="flex-container">
+  <div class="content flex-item">
+    <div class="subhead">
+      Delivery details for {@clientname}
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Address</span>
+        <input type="text" id="address" name="address" class="form-control" placeholder="Address" readonly value="{@address}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">City</span>
+        <input type="text" id="addresscity" name="addresscity" class="form-control" placeholder="City" readonly value="{@addresscity}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">County</span>
+        <input type="text" id="addresscounty" name="addresscounty" class="form-control" placeholder="County" readonly value="{@addresscounty}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">State</span>
+        <input type="text" id="addressstate" name="addressstate" class="form-control" placeholder="State" readonly value="{@addressstate}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Zip code</span>
+        <input type="text" id="addresszipcode" name="addresszipcode" class="form-control" placeholder="Zip code" readonly value="{@addresszipcode}" style="width: 500px;">
+      </div>
+    </div>
+    <div class="subhead">
+      Order details
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Order type</span>
+        <input type="text"  id="ordertype" name="ordertype" class="form-control" placeholder="Order type" readonly value="{@ordertype}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Order date</span>
+        <input type="text"  id="orderdate" name="orderdate" class="form-control" placeholder="Order date" readonly value="{@orderdate}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Tank size</span>
+        <input type="text"  id="tanksize" name="tanksize" class="form-control" placeholder="Tank size" readonly value="{@tanksize}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Gallons</span>
+        <input type="text"  id="gallons" name="gallons" class="form-control" placeholder="Tank size" readonly value="{@gallons}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <span class="input-group-addon" style="width: 300px;">Notes</span>
+      <textarea id="notes" name="notes" class="form-control" placeholder="Notes" readonly style="width: 500px;">{@notes}</textarea>
+    </div>
+    <div class="subhead">
+      Payment details
+    </div>
+    <div>
+      <pre style='width: 50%; margin: 0 auto;'>{@pricebreakdown}</pre>
+    </div>
+    <div class="subhead">
+      Delivery Status
+    </div>
+    <div>
+      <span class="input-group-addon" style="width: 300px;">Remarks</span>
+      <textarea id="remarks" name="remarks" class="form-control" placeholder="Remarks" style="width: 500px;"></textarea>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Set status to</span>
+        <select id="status" name="status" class="form-control" placeholder="status" style="width: 600px;">
+          <option value='Delivered'>Delivered</option>
+          <option value='Not Delivered'>Not Delivered</option>
+        </select>
+      </div>
+    <center><button type="submit" class="btn btn-primary">Save</button></center>
+  </div>
+</div>

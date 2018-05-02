@@ -352,7 +352,6 @@ function calculateOrder() {
   }
 
   var prompt = `
-  <pre>
   Order type: ==========`+ ordertype +`===========
   Tank price               -----   $`+ addtankprice +`
   Gallons needed           -----   `+ gallons +`
@@ -365,7 +364,7 @@ function calculateOrder() {
   Credit card fee          -----   $ `+ ccfee +`
   Express delivery fee     -----   $ `+ expressdelivery +`
   TOTAL               ---------------   $ `+ total +`
-  </pre>`;
+  `;
   document.getElementById('calculatehere').innerHTML = prompt;
   document.getElementById('pricebreakdown').value = prompt;
   document.getElementById('totalamount').value = total;

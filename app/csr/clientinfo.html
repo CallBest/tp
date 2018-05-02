@@ -307,9 +307,17 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-2">
             <input type="checkbox" id="expressdelivery" name="expressdelivery"></input>
             <label for="expressdelivery">Express delivery</label><br>
+          </div>
+          <div class="col-md-4">
+            <label for="typeofdelivery">Express delivery options</label><br>
+            <select name='typeofdelivery'>
+              <option value="Expedited delivery">Expedited delivery</option>
+              <option value="Emergency delivery">Emergency delivery</option>
+              <option value="Special delivery">Special delivery</option>
+            </select>
           </div>
         </div>
 
@@ -328,9 +336,11 @@
         </div>
         <div class="row">
           <br/>
-          <div class="col-md-6 col-md-offset-3" id="calculatehere">
-            <input type='hidden' name='pricebreakdown' id='pricebreakdown'>
-          </div>
+          <pre>
+            <div class="col-md-6 col-md-offset-3" id="calculatehere">
+            </div>
+          </pre>
+          <textarea name='pricebreakdown' id='pricebreakdown'></textarea>
         </div>
 
         <hr class="double"/>

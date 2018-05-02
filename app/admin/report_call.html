@@ -1,0 +1,44 @@
+<div class="flex-container">
+  <div class="flex-item flex-card">
+    <div class="subhead">
+      Call Report
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 150px;">Start date</span>
+        <input type="date" id="startdate" name="startdate" class="form-control" style="width: 300px;">
+        <span class="input-group-addon" style="width: 150px;">End date</span>
+        <input type="date" id="enddate" name="enddate" class="form-control" style="width: 300px;">
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="button">Apply filter</button>
+        </span>
+      </div>
+    </div>
+    <table class="table table-condensed" style="width:90%;" align="center">
+      <thead>
+        <tr class="row-item-header">
+          <th width="30%">Disposition</th>
+          <th width="20%">Lead count</th>
+          <th width="20%">Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <loop gridvalues>
+          <tr class="row-item" onclick="showOrder({@orderid});">
+            <td>{@disposition}</td>
+            <td>{@leadcount}</td>
+            <td>{@rate}</td>
+          </tr>
+        </loop gridvalues>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script language='Javascript'>
+  var today = new Date();
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate()+1);
+  document.getElementById('startdate').value = today.toJSON().slice(0,10);
+  document.getElementById('enddate').value = tomorrow.toJSON().slice(0,10);
+</script>

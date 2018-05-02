@@ -1,0 +1,9 @@
+markdrivewaydifficult 
+marknoservice 
+problemcustomer 
+haspricecap 
+haslockin 
+taxexempt 
+hasprebuyannualfee 
+onbudgetprogram 
+twelvemonthtankprogram 

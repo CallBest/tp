@@ -1,0 +1,70 @@
+<div class="flex-container">
+  <div class="flex-item flex-card">
+    <div class="subhead">
+      Order Details
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Client name</span>
+        <input type="text" id="clientname" name="clientname" class="form-control" placeholder="Client name" readonly value="{@clientname}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Order type</span>
+        <input type="text"  id="ordertype" name="ordertype" class="form-control" placeholder="Order type" readonly value="{@ordertype}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Order date</span>
+        <input type="text"  id="orderdate" name="orderdate" class="form-control" placeholder="Order date" readonly value="{@orderdate}" style="width: 500px;">
+      </div>
+    </div>
+    <div>
+      <pre style='width: 50%; margin: 0 auto;'>{@pricebreakdown}</pre>
+    </div>
+    <div class="subhead">
+      Payment Details
+    </div>
+    <div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Payment method</span>
+        <input type="text"  id="paymethod" name="paymethod" class="form-control" placeholder="Payment method" value="{@paymethod}" style="width: 500px;">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Card type</span>
+        <input type="text"  id="cardtype" name="cardtype" class="form-control" placeholder="Card type" value="{@cardtype}" style="width: 500px;">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Card number</span>
+        <input type="text"  id="cardnumber" name="cardnumber" class="form-control" placeholder="Card number" value="{@cardnumber}" style="width: 500px;">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Expiration date</span>
+        <input type="text"  id="expirationdate" name="expirationdate" class="form-control" placeholder="Expiration date" value="{@expirationdate}" style="width: 500px;">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">CVV</span>
+        <input type="text"  id="cvv" name="cvv" class="form-control" placeholder="ccv" value="{@cvv}" style="width: 500px;">
+      </div>
+    </div>
+    <div class="subhead">
+      Payment Status
+    </div>
+    <form name='payment' action='savepayment.php' method='post'>
+      <div class="input-group">
+        <span class="input-group-addon" style="width: 300px;">Set status to</span>
+        <select id="status" name="status" class="form-control" placeholder="status" style="width: 600px;">
+          <option value='Payment Processed'>Payment Processed</option>
+          <option value='Declined'>Declined</option>
+        </select>
+        <input type="hidden" id="refererpage" name="refererpage" value="{@refererpage}">
+        <input type="hidden" id="userid" name="userid" value="{@userid}">
+        <input type="hidden" id="user" name="user" value="{@user}">
+        <input type="hidden" id="leadid" name="leadid" value="{@leadid}">
+      </div>
+      <center><button type="submit" class="btn btn-primary">Save</button></center>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+CSR dispo
+
+Regular fill (Visible in Billing and Dispatcher Account)
+Regular fill + pressure test (Visible in Billing)
+Regular fill + Special Delivery  (Visible in Billing)
+Regular fill (Flagged Customer)  (Visible in Billing)
+Prebuy + fill  (Visible in Billing)
+Prebuy + Special Delivery  (Visible in Billing)
+Prebuy Quote + Sale / No Sale  (Visible in Billing)
+Existing Prebuy Order (Visible in Dispatcher Account)
+Tank Quote + Sale / No Sale
+Tank Purchase  (Visible in Billing)
+Do Not Call 
+Inquiry
+Complaint
+
+Billing Disposition Codes
+
+Payment Processed - Regular fill + Special Delivery  (Visible in Dispatcher Account)
+Payment Processed - Regular fill + Pressure test  (Visible in Dispatcher Account)
+Payment Processed - Regular fill (Flagged Customer)  (Visible in Dispatcher Account)
+Payment Processed - Prebuy + Fill  (Visible in Dispatcher Account)
+Payment Processed - Prebuy + Special Delivery  (Visible in Dispatcher Account)
+Payment Declined - Return to CSR
+
+Driver Dispo codes
+
+Completed
+Pending
+Unsuccessful

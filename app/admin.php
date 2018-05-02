@@ -62,10 +62,12 @@ switch($page){
     $body->set_template("admin/staff.html");
     break;
   case 'report_call':
-    $body->set_template("admin/report.html");
+    $body->set_template("admin/report_call.html");
+    include("admin/report_call.php");
     break;
   case 'report_sales':
-    $body->set_template("admin/report.html");
+    $body->set_template("admin/report_sales.html");
+    include("admin/report_sales.php");
     break;
   default:
     $body->set_template("admin/cpanel.html");

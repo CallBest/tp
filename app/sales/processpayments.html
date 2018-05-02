@@ -1,0 +1,29 @@
+<div class="content flex-item">
+  <table class="table table-condensed" style="width:90%;" align="center">
+    <thead>
+      <tr class="row-item-header">
+        <th width="30%">Name</th>
+        <th width="20%">Order Date</th>
+        <th width="20%">Type of Order</th>
+        <th width="30%">Price Breakdown</th>
+      </tr>
+    </thead>
+    <tbody>
+      <loop gridvalues>
+        <tr class="row-item" onclick="showOrder({@orderid});">
+          <td>{@clientname}</td>
+          <td>{@orderdate}</td>
+          <td>{@ordertype}</td>
+          <td class='monotype'><pre>{@pricebreakdown}</pre></td>
+        </tr>
+      </loop gridvalues>
+    </tbody>
+  </table>
+</div>
+
+<script language="javascript">
+  function showOrder(orderid) {
+    var nextlink = 'sales.php?show={@workingfolder}&orderid=' + orderid;
+    window.location = nextlink;
+  }
+</script>

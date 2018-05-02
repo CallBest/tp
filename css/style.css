@@ -150,3 +150,8 @@ tr.searchresult:hover {
 .input-group {
   margin: 5px auto;
 }
+
+.monotype {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+}

@@ -93,7 +93,7 @@ $db->query = "
 $db->execute();
 
 //orders
-if ($disposition == 'Place Order') {
+if ($disposition == 'Order Placed') {
   if ((isset($_REQUEST['newtankorder'])) && (isset($_REQUEST['buytank']))) {
     $ordertype = 'Tank';
     $tanksize = $_REQUEST['buytank'];
@@ -110,14 +110,29 @@ if ($disposition == 'Place Order') {
   } else {
     $expressdelivery = "0";
   }
+  if (isset($_REQUEST['paywithcc'])) {
+    $paymethod = 'Credit card';
+  } else {
+    $paymethod = "Check";
+  }
+  if (isset($_REQUEST['cardnumber'])) {
+    if (substr($_REQUEST['cardnumber'],0,4) == 'XXXX') {
+      $db->query = "select cardnumber from ".TABLE_CLIENTS." where leadid=$leadid";
+      $db->execute();
+      $row = $db->fetchrow(0);
+      $cardnumber = $row['cardnumber'];
+    } else {
+      $cardnumber = $_REQUEST['cardnumber'];
+    }
+  }
   $datafields = array (
+    'pricebreakdown',
     'billingaddress',
     'billingcity',
     'billingcounty',
     'billingstate',
     'billingzipcode',
     'cardtype',
-    'cardnumber',
     'expirationdate',
     'cvv',
     'creditcardzip',
@@ -128,11 +143,11 @@ if ($disposition == 'Place Order') {
   foreach ($datafields as $key => $value) {
     $curfield = $_POST["$value"];
     $$value = $curfield;
-    $setfields .= "$value='$curfield',";
+    $setfields .= "'$curfield',";
   }
 
-  $db->query = "insert into ".TABLE_ORDERS." (leadid,ordertype,tanksize,gallons,ppg,expressdelivery,billingaddress,billingcity,billingcounty,billingstate,billingzipcode,cardtype,cardnumber,expirationdate,cvv,creditcardzip,totalamount,orderdate)
-      values ($leadid,'$ordertype','$tanksize','$gallons','$ppg','$expressdelivery',$setfields now())";
+  $db->query = "insert into ".TABLE_ORDERS." (leadid,ordertype,tanksize,gallons,ppg,expressdelivery,paymethod,pricebreakdown,billingaddress,billingcity,billingcounty,billingstate,billingzipcode,cardtype,expirationdate,cvv,creditcardzip,totalamount,cardnumber,orderdate)
+      values ($leadid,'$ordertype','$tanksize','$gallons','$ppg','$expressdelivery','$paymethod',$setfields '$cardnumber',now())";
   $db->execute();
 }
 

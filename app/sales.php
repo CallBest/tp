@@ -1,7 +1,7 @@
 <?php
 
-require_once("includes/cookie.php");
-require_once("includes/template.php");
+require_once("../includes/cookie.php");
+require_once("../includes/template.php");
 
 $body = new Template();
 $cookie = new CookieInfo("TP_sales");
@@ -19,20 +19,28 @@ if ($cookie->check()) {
 }
 
 // set the header menu
-$body->set_template("templates/sales/header.html");
+$body->set_template("sales/header.html");
 echo $body->create();
 
 // set the main content
-$page = isset($_REQUEST['show']) ? strtolower(str_replace("'","",$_REQUEST['show'])) : 'dashboard';
+$page = isset($_REQUEST['show']) ? strtolower(str_replace("'","",$_REQUEST['show'])) : 'billing';
+$body->add_key('mainpage',$_SERVER['SCRIPT_NAME']);
+$body->add_key('workingfolder',$page);
 switch($page){
-  case 'search':
-  $body->set_template("templates/sales/clientinfo.html");
+  case 'process_payments':
+    if (isset($_REQUEST['orderid'])) {
+      $body->set_template("sales/paymentdetails.html");
+      include('sales/paymentdetails.php');
+    } else {
+      $body->set_template("sales/processpayments.html");
+      include('sales/processpayments.php');
+    }
     break;
   default:
-    $body->set_template("templates/sales/main.html");
+    $body->set_template("sales/main.html");
 }
 echo $body->create();
 
 // set the footer, if any.
-$body->set_template("templates/sales/footer.html");
+$body->set_template("sales/footer.html");
 echo $body->create();
