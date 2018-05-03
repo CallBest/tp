@@ -1,3 +1,4 @@
+<form name='delivery' method='POST' action='delivery/scheduledelivery.php'>
 <div class="flex-container">
   <div class="flex-item flex-card">
     <div class="subhead">
@@ -110,8 +111,14 @@
       </div>
     </div>
     <hr/>
-    <button type="button" class='btn btn-primary center'>Set schedule</button>
+    <input type="hidden" id="refererpage" name="refererpage" value="{@refererpage}">
+    <input type="hidden" id="userid" name="userid" value="{@userid}">
+    <input type="hidden" id="orderid" name="orderid" value="{@orderid}">
+    <input type="hidden" id="leadid" name="leadid" value="{@leadid}">
+    <button type="submit" class='btn btn-primary center'>Set schedule</button>
   </div>
+</div>
+<div class="flex-container">
   <div class="flex-item flex-card">
     <div class="subhead">
       <span id="displaySchedDate"></span>
@@ -124,7 +131,7 @@
     </div>
   </div>
 </div>
-
+</form>
 <script src="../js/calendar.js"></script>
 <script language="Javascript">
   drawCalendar();

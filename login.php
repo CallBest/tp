@@ -14,24 +14,55 @@ if ($_POST) {
 		$errmsg = "Invalid username or password.";
 	}
 	else {
-    $cookie = new CookieInfo("TP");
-		$cookie->addkey("userid", $row['userid']);
-    $cookie->addkey("user", $_POST['loginusername']);
-    $cookie->addkey("userfn", $row['userfn']);
-    $cookie->addkey("userln", $row['userln']);
-    $cookie->addkey("teamid", $row['teamid']);
-    $cookie->addkey("usertype", $row['usertype']);
-    echo $cookie->array['usertype'];
-    $cookie->setcookies();
-    if ($cookie->array['usertype'] == 9) {
+    if ($row['usertype'] == 9) {
+      $cookie = new CookieInfo("TP_admin");
+      $cookie->addkey("userid", $row['userid']);
+      $cookie->addkey("user", $_POST['loginusername']);
+      $cookie->addkey("userfn", $row['userfn']);
+      $cookie->addkey("userln", $row['userln']);
+      $cookie->addkey("teamid", $row['teamid']);
+      $cookie->addkey("usertype", $row['usertype']);
+      $cookie->setcookies();
       header("Location: app/admin.php");
-    } else if ($cookie->array['usertype'] == 4) {
+    } else if ($row['usertype'] == 4) {
+      $cookie = new CookieInfo("TP_sales");
+      $cookie->addkey("userid", $row['userid']);
+      $cookie->addkey("user", $_POST['loginusername']);
+      $cookie->addkey("userfn", $row['userfn']);
+      $cookie->addkey("userln", $row['userln']);
+      $cookie->addkey("teamid", $row['teamid']);
+      $cookie->addkey("usertype", $row['usertype']);
+      $cookie->setcookies();
       header("Location: app/sales.php");
-    } else if ($cookie->array['usertype'] == 3) {
+    } else if ($row['usertype'] == 3) {
+      $cookie = new CookieInfo("TP_driver");
+      $cookie->addkey("userid", $row['userid']);
+      $cookie->addkey("user", $_POST['loginusername']);
+      $cookie->addkey("userfn", $row['userfn']);
+      $cookie->addkey("userln", $row['userln']);
+      $cookie->addkey("teamid", $row['teamid']);
+      $cookie->addkey("usertype", $row['usertype']);
+      $cookie->setcookies();
       header("Location: app/driver.php");
-    } else if ($cookie->array['usertype'] == 2) {
+    } else if ($row['usertype'] == 2) {
+      $cookie = new CookieInfo("TP_delivery");
+      $cookie->addkey("userid", $row['userid']);
+      $cookie->addkey("user", $_POST['loginusername']);
+      $cookie->addkey("userfn", $row['userfn']);
+      $cookie->addkey("userln", $row['userln']);
+      $cookie->addkey("teamid", $row['teamid']);
+      $cookie->addkey("usertype", $row['usertype']);
+      $cookie->setcookies();
       header("Location: app/delivery.php");
-    } else if ($cookie->array['usertype'] == 1) {
+    } else if ($row['usertype'] == 1) {
+      $cookie = new CookieInfo("TP");
+      $cookie->addkey("userid", $row['userid']);
+      $cookie->addkey("user", $_POST['loginusername']);
+      $cookie->addkey("userfn", $row['userfn']);
+      $cookie->addkey("userln", $row['userln']);
+      $cookie->addkey("teamid", $row['teamid']);
+      $cookie->addkey("usertype", $row['usertype']);
+      $cookie->setcookies();
       header("Location: app/csr.php");
     }
     exit;

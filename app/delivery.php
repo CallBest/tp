@@ -12,8 +12,8 @@ if ($cookie->check()) {
   $cookie->getcookies();
   $userid = $cookie->array['userid'];
   $body->add_key('userid',$userid);
-	$body->add_key('firstname',$cookie->array['firstname']);
-	$body->add_key('lastname',$cookie->array['lastname']);
+	$body->add_key('firstname',$cookie->array['userfn']);
+	$body->add_key('lastname',$cookie->array['userln']);
 //} else {
 //  header('Location: index.php');
 }
@@ -24,8 +24,13 @@ $body->set_template("delivery/header.html");
 echo $body->create();
 
 // set the main content
+if (isset($_SERVER['HTTP_REFERER'])) {
+  $body->add_key('refererpage',$_SERVER['HTTP_REFERER']);
+} else {
+  $body->add_key('refererpage','http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']);
+}
 
-$page = isset($_REQUEST['show']) ? strtolower(str_replace("'","",$_REQUEST['show'])) : 'billing';
+$page = isset($_REQUEST['show']) ? strtolower(str_replace("'","",$_REQUEST['show'])) : 'add';
 $body->add_key('mainpage',$_SERVER['SCRIPT_NAME']);
 $body->add_key('workingfolder',$page);
 switch($page){

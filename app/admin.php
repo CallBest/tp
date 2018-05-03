@@ -4,7 +4,7 @@ require_once("../includes/cookie.php");
 require_once("../includes/template.php");
 
 $body = new Template();
-$cookie = new CookieInfo("TP_9");
+$cookie = new CookieInfo("TP_admin");
 
 // check existing credentials before proceeding with tha application
 // redirect to login if no valid credentials found 
@@ -12,8 +12,8 @@ if ($cookie->check()) {
   $cookie->getcookies();
   $userid = $cookie->array['userid'];
   $body->add_key('userid',$userid);
-	$body->add_key('firstname',$cookie->array['firstname']);
-	$body->add_key('lastname',$cookie->array['lastname']);
+	$body->add_key('firstname',$cookie->array['userfn']);
+	$body->add_key('lastname',$cookie->array['userln']);
 //} else {
 //  header('Location: index.php');
 }

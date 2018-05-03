@@ -7,7 +7,7 @@ $db = new dbconnection();
 $db->dbconnect();
 
 $orderid = $_REQUEST['orderid'];
-$db->query = "select concat(firstname,' ',lastname) as clientname,disposition,orderdate,ordertype
+$db->query = "select orderid,a.leadid,concat(firstname,' ',lastname) as clientname,disposition,orderdate,ordertype
               from ".TABLE_ORDERS." a inner join ".TABLE_CLIENTS." b on (a.leadid=b.leadid)
               where orderid=$orderid";
 $db->execute();

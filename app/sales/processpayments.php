@@ -7,7 +7,7 @@ $db = new dbconnection();
 $db->dbconnect();
 $db->query = "select orderid,concat(firstname,' ',lastname) as clientname,disposition,orderdate,ordertype,pricebreakdown
               from ".TABLE_ORDERS." a inner join ".TABLE_CLIENTS." b on (a.leadid=b.leadid)
-              where disposition='Order Placed'";
+              where disposition='Order Placed' and paymentstatus=''";
 $db->execute();
 $rowcount = $db->rowcount();
 $gridvalues = [];

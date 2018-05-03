@@ -197,6 +197,8 @@ create table orders (
 	paymethod varchar(20) not null default '',
 	payamount float not null default 0.00,
 	paymentstatus carchar(50) not null default '',
+	processedby int(11) not null default 0,
+	updated DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 	actiontaken enum('','Scheduled delivery','Declined') not null default '',
 	delivered bit not null default 0,
 	deliverydate datetime not null default '0000-00-00 00:00:00',
